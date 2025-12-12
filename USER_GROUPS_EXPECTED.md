@@ -61,6 +61,7 @@ User Action: _Fetch the groups the current user belongs to._
         "memberCount": 14,
         "maxMembersCount": 50,
         "isLeader": true,
+        "isMember": false,
         "createdAt": "2025-12-01T05:10:00.000Z",
         "updatedAt": "2025-12-10T18:22:31.000Z"
       }
@@ -117,6 +118,7 @@ User Action: _List all public groups available to join._
         "memberCount": 52,
         "maxMembersCount": 100,
         "isLeader": false,
+        "isMember": false,
         "createdAt": "2025-11-15T08:00:00.000Z",
         "updatedAt": "2025-12-09T14:00:00.000Z"
       }
