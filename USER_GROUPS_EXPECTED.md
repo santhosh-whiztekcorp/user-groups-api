@@ -5,7 +5,7 @@
   "GroupType": ["church", "youth_group", "bible_study", "family", "prayer_group"],
   "GroupPrivacy": ["public", "private"],
   "GroupMemberRole": ["leader", "co_leader", "member"],
-  "GroupInviteStatus": ["pending", "accepted", "declined", "expired"],
+  "GroupInviteStatus": ["pending", "accepted", "declined", "expired", "seen", "cancelled"],
   "GroupAssignmentType": ["Quiz", "Quest"],
   "GroupAssignmentUserStatus": ["NotStarted", "InProgress", "Completed", "Abandoned"],
   "GroupAssignmentQuestionStatus": ["NotAnswered", "Answered", "Skipped"],
@@ -336,7 +336,30 @@ User Action: _List invitations received by the current user._
 #### Response Body
 
 ```json
-{}
+{
+  "success": true,
+  "message": "Invitations fetched successfully",
+  "data": {
+    "items": [
+      {
+        "id": "inv-123-456-789",
+        "groupId": "group-123-456-789",
+        "groupName": "Wednesday Night Study",
+        "iconPath": "path/to/icon.png",
+        "inviterName": "Rachel Martinez",
+        "inviterId": "user-123-456",
+        "category": "Bible study",
+        "privacy": "private",
+        "status": "pending",
+        "createdAt": "2025-01-15T10:00:00.000Z",
+        "updatedAt": "2025-01-15T10:00:00.000Z"
+      }
+    ],
+    "total": 10,
+    "page": 1,
+    "pageSize": 20
+  }
+}
 ```
 
 <br />
@@ -348,7 +371,13 @@ Leader / Co-leader Action: _List users eligible to be invited to a specific grou
 #### Query Params
 
 ```json
-{}
+{
+  "page": 1,
+  "pageSize": 20,
+  "sort": "-createdAt",
+  "name": "",
+  "username": ""
+}
 ```
 
 #### Request Body
@@ -360,7 +389,24 @@ Leader / Co-leader Action: _List users eligible to be invited to a specific grou
 #### Response Body
 
 ```json
-{}
+{
+  "success": true,
+  "message": "Users fetched successfully",
+  "data": {
+    "items": [
+      {
+        "id": "user-123-456-789",
+        "name": "John Doe",
+        "username": "johndoe",
+        "email": "john.doe@example.com",
+        "image": "https://example.com/profile.png"
+      }
+    ],
+    "total": 50,
+    "page": 1,
+    "pageSize": 20
+  }
+}
 ```
 
 <br />
@@ -418,13 +464,24 @@ User Action: _Accept a group invitation or join via token._
 #### Request Body
 
 ```json
-{}
+{
+  "invitationId": "inv-123-456-789"
+}
 ```
 
 #### Response Body
 
 ```json
-{}
+{
+  "success": true,
+  "message": "Successfully joined the group",
+  "data": {
+    "groupId": "group-123-456-789",
+    "memberId": "member-123-456-789",
+    "role": "member",
+    "joinedAt": "2025-01-15T10:00:00.000Z"
+  }
+}
 ```
 
 <br />
@@ -435,20 +492,30 @@ User Action: _Decline/reject a pending group invitation._
 
 #### Query Params
 
-```
+```json
 {}
 ```
 
 #### Request Body
 
-```
-{}
+```json
+{
+  "invitationId": "inv-123-456-789"
+}
 ```
 
 #### Response Body
 
-```
-{}
+```json
+{
+  "success": true,
+  "message": "Invitation declined successfully",
+  "data": {
+    "invitationId": "inv-123-456-789",
+    "status": "declined",
+    "declinedAt": "2025-01-15T10:00:00.000Z"
+  }
+}
 ```
 
 <br />
@@ -472,7 +539,15 @@ Leader / Co-leader Action: _Cancel a sent group invitation._
 #### Response Body
 
 ```json
-{}
+{
+  "success": true,
+  "message": "Invitation cancelled successfully",
+  "data": {
+    "invitationId": "inv-123-456-789",
+    "status": "cancelled",
+    "cancelledAt": "2025-01-15T10:00:00.000Z"
+  }
+}
 ```
 
 <br />
@@ -483,20 +558,28 @@ User Action: _Mark a group invitation as seen._
 
 #### Query Params
 
-```
+```json
 {}
 ```
 
 #### Request Body
 
-```
+```json
 {}
 ```
 
 #### Response Body
 
-```
-{}
+```json
+{
+  "success": true,
+  "message": "Invitation marked as seen",
+  "data": {
+    "invitationId": "inv-123-456-789",
+    "status": "seen",
+    "seenAt": "2025-01-15T10:00:00.000Z"
+  }
+}
 ```
 
 <br />
@@ -823,7 +906,13 @@ User Action: _List quizzes available for assignments in the group._
 #### Query Params
 
 ```json
-{}
+{
+  "page": 1,
+  "pageSize": 20,
+  "sort": "-createdAt",
+  "title": "",
+  "q": ""
+}
 ```
 
 #### Request Body
@@ -835,7 +924,28 @@ User Action: _List quizzes available for assignments in the group._
 #### Response Body
 
 ```json
-{}
+{
+  "success": true,
+  "message": "Quizzes fetched successfully",
+  "data": {
+    "items": [
+      {
+        "quizTypeId": "8c9d0e1f-3333-4a4b-9c9d-2e3f4a5b6c7d",
+        "title": "Bible Study Quiz",
+        "description": "Questions about this week's reading",
+        "totalPoints": 100,
+        "totalQuestions": 10,
+        "timeLimitType": "TotalQuizTime",
+        "timeLimitValue": 1800,
+        "createdAt": "2025-12-01T10:00:00.000Z",
+        "updatedAt": "2025-12-01T10:00:00.000Z"
+      }
+    ],
+    "total": 25,
+    "page": 1,
+    "pageSize": 20
+  }
+}
 ```
 
 <br />
@@ -932,19 +1042,25 @@ User Action: _List members of a group._
         "id": "3b2a1c4d-5555-4b8e-9a77-0dc5f4b43111",
         "username": "leader1",
         "name": "Leader Name",
-        "role": "leader"
+        "image": "https://example.com/profile.png",
+        "role": "leader",
+        "joinedAt": "2025-11-15T08:00:00.000Z"
       },
       {
         "id": "7f8g9h0i-5555-4a4b-9c9d-2e3f4a5b6c7d",
         "username": "coleader1",
         "name": "Co-Leader Name",
-        "role": "co_leader"
+        "image": "https://example.com/profile2.png",
+        "role": "co_leader",
+        "joinedAt": "2025-11-20T10:00:00.000Z"
       },
       {
         "id": "9a0b1c2d-6666-4a4b-9c9d-2e3f4a5b6c7d",
         "username": "member1",
         "name": "Member Name",
-        "role": "member"
+        "image": "https://example.com/profile3.png",
+        "role": "member",
+        "joinedAt": "2025-12-01T14:00:00.000Z"
       }
     ],
     "total": 14,
@@ -1063,7 +1179,10 @@ User Action: _Fetch the leaderboard for a group._
 
 ```json
 {
-  "period": "all_time"
+  "period": "all_time",
+  "page": 1,
+  "pageSize": 20,
+  "sort": "-xp"
 }
 ```
 
@@ -1080,12 +1199,13 @@ User Action: _Fetch the leaderboard for a group._
   "success": true,
   "message": "Leaderboard fetched",
   "data": {
-    "period": "all_time",
-    "entries": [
+    "items": [
       {
         "userId": "3b2a1c4d-5555-4b8e-9a77-0dc5f4b43111",
         "username": "leader1",
         "name": "Leader Name",
+        "image": "https://example.com/profile.png",
+        "role": "leader",
         "xp": 1250,
         "rank": 1
       },
@@ -1093,6 +1213,8 @@ User Action: _Fetch the leaderboard for a group._
         "userId": "7f8g9h0i-5555-4a4b-9c9d-2e3f4a5b6c7d",
         "username": "member1",
         "name": "Member Name",
+        "image": "https://example.com/profile2.png",
+        "role": "member",
         "xp": 980,
         "rank": 2
       },
@@ -1100,10 +1222,15 @@ User Action: _Fetch the leaderboard for a group._
         "userId": "9a0b1c2d-6666-4a4b-9c9d-2e3f4a5b6c7d",
         "username": "member2",
         "name": "Another Member",
+        "image": "https://example.com/profile3.png",
+        "role": "co_leader",
         "xp": 750,
         "rank": 3
       }
-    ]
+    ],
+    "total": 50,
+    "page": 1,
+    "pageSize": 20
   }
 }
 ```
