@@ -36,6 +36,7 @@ User Action: _Fetch the groups the current user belongs to._
 2. **Add these new properties:**
    - `maxMembersCount` → **Maximum Members Count**
    - `isLeader` → **Is Leader flag** (Boolean indicating if current user is the leader)
+   - `isMember` → **Is Leader flag** (Boolean indicating if current user is the member)
 
 <br />
 
@@ -63,7 +64,8 @@ User Action: _List all public groups available to join._
 
 2. **Add these new properties:**
    - `maxMembersCount` → **Maximum Members Count**
-   - `isLeader` → **Is Leader flag** (Boolean indicating if current user is the leader, typically false for public groups)
+   - `isLeader` → **Is Leader flag** (Boolean indicating if current user is the leader)
+   - `isMember` → **Is Leader flag** (Boolean indicating if current user is the member)
 
 <br />
 
