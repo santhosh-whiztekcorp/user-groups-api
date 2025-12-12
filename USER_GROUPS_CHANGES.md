@@ -91,6 +91,22 @@ User Action: _Create a new group._
 
 <br />
 
+> ### PUT - /groups/{groupId}
+
+Leader / Co-leader Action: _Update group details._
+
+**Request Body:**
+
+1. **Change these properties:**
+   - `imageUrl` → `iconPath` - Change from URL string to string (references file path in frontend)
+
+**Response Body:**
+
+1. **Change these properties:**
+   - `imageUrl` → `iconPath` - Change from URL string to string (references file path in frontend)
+
+<br />
+
 ## GROUPS - INVITATIONS
 
 > ### GET - /groups/invites/my
