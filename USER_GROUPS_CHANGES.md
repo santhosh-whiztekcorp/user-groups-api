@@ -124,6 +124,32 @@ Add these properties to each invitation item:
 
 <br />
 
+> ### GET - /groups/invites/{invitationId}
+
+User Action: _Fetch a specific invitation by id._
+
+This endpoint needs to be implemented
+
+**Response Body:**
+
+Returns a single invitation object with the following properties:
+
+- `id` → Invitation ID
+- `groupId` → Group ID
+- `groupName` → Group name
+- `iconPath` → Icon file path (string)
+- `inviterName` → Name of the user who sent the invitation
+- `inviterId` → ID of the user who sent the invitation
+- `category` → Category/tag (e.g., "Bible study")
+- `privacy` → Privacy status ("private" or "public")
+- `status` → Invitation status (e.g., "pending", "seen", "accepted", "declined", "cancelled", "expired")
+- `description` → Group description
+- `memberCount` → Current number of members in the group
+- `createdAt` → Timestamp when invitation was created
+- `updatedAt` → Timestamp when invitation was last updated
+
+<br />
+
 > ### GET - /groups/{groupId}/users-for-invitation
 
 Leader / Co-leader Action: _List users eligible to be invited to a specific group._

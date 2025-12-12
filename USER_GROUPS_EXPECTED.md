@@ -414,6 +414,48 @@ User Action: _List invitations received by the current user._
 
 <br />
 
+> ### GET - /groups/invites/{invitationId}
+
+User Action: _Fetch a specific invitation by id._
+
+#### Query Params
+
+```json
+{}
+```
+
+#### Request Body
+
+```json
+{}
+```
+
+#### Response Body
+
+```json
+{
+  "success": true,
+  "message": "Invitation fetched successfully",
+  "data": {
+    "id": "inv-123-456-789",
+    "groupId": "group-123-456-789",
+    "groupName": "Wednesday Night Study",
+    "iconPath": "path/to/icon.png",
+    "inviterName": "Rachel Martinez",
+    "inviterId": "user-123-456",
+    "category": "Bible study",
+    "privacy": "private",
+    "status": "pending",
+    "description": "A community group studying the Bible weekly.",
+    "memberCount": 14,
+    "createdAt": "2025-01-15T10:00:00.000Z",
+    "updatedAt": "2025-01-15T10:00:00.000Z"
+  }
+}
+```
+
+<br />
+
 > ### GET - /groups/{groupId}/users-for-invitation
 
 Leader / Co-leader Action: _List users eligible to be invited to a specific group._
