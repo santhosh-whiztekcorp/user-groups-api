@@ -3,6 +3,7 @@
 **GroupInviteStatus:**
 
 Add these new enum values:
+
 - `"seen"` → Status when invitation has been seen by the user
 - `"cancelled"` → Status when invitation has been cancelled by leader/co-leader
 
@@ -77,30 +78,6 @@ User Action: _Create a new group._
 
 <br />
 
-> ### POST - /groups/{groupId}/join
-
-User Action: _Join a public group by id._
-
-<br />
-
-> ### POST - /groups/{groupId}/leave
-
-User Action: _Leave a group by id._
-
-<br />
-
-> ### PUT - /groups/{groupId}
-
-Leader / Co-leader Action: _Update group details._
-
-<br />
-
-> ### DELETE - /groups/{groupId}
-
-Leader / Co-leader Action: _Delete a group._
-
-<br />
-
 ## GROUPS - INVITATIONS
 
 > ### GET - /groups/invites/my
@@ -143,6 +120,7 @@ This endpoint needs to be implemented
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-createdAt")
@@ -152,23 +130,19 @@ Add these new properties:
 **Response Body:**
 
 Add paginated response structure:
+
 - `items` - Array of user objects
 - `total` - Total number of users
 - `page` - Current page number
 - `pageSize` - Items per page
 
 Add these properties to each user item:
+
 - `id` → User ID
 - `name` → User's full name
 - `username` → User's username
 - `email` → User's email address
 - `image` → User's profile image URL
-
-<br />
-
-> ### POST - /groups/{groupId}/invites
-
-Leader / Co-leader Action: _Create invitations for a specific group._
 
 <br />
 
@@ -181,11 +155,13 @@ This endpoint needs to be implemented
 **Request Body:**
 
 Add these properties:
+
 - `invitationId` → Invitation ID to accept
 
 **Response Body:**
 
 Add these properties:
+
 - `success` → Boolean indicating success
 - `message` → Success message
 - `data` → Object containing:
@@ -205,11 +181,13 @@ This endpoint needs to be implemented
 **Request Body:**
 
 Add these properties:
+
 - `invitationId` → Invitation ID to decline
 
 **Response Body:**
 
 Add these properties:
+
 - `success` → Boolean indicating success
 - `message` → Success message
 - `data` → Object containing:
@@ -228,6 +206,7 @@ This endpoint needs to be implemented
 **Response Body:**
 
 Add these properties:
+
 - `success` → Boolean indicating success
 - `message` → Success message
 - `data` → Object containing:
@@ -246,6 +225,7 @@ This endpoint needs to be implemented
 **Response Body:**
 
 Add these properties:
+
 - `success` → Boolean indicating success
 - `message` → Success message
 - `data` → Object containing:
@@ -264,6 +244,7 @@ User Action: _List announcements for a group._
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-createdAt")
@@ -271,22 +252,11 @@ Add these new properties:
 **Response Body:**
 
 Change from array to paginated object structure:
+
 - `items` - Array of announcements
 - `total` - Total number of announcements
 - `page` - Current page number
 - `pageSize` - Items per page
-
-<br />
-
-> ### GET - /groups/{groupId}/announcements/{announcementId}
-
-User Action: _Fetch a single announcement by id._
-
-<br />
-
-> ### POST - /groups/{groupId}/announcements
-
-Leader / Co-leader Action: _Create a new announcement in a group._
 
 <br />
 
@@ -299,6 +269,7 @@ User Action: _List assignments for a group._
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-createdAt")
@@ -306,22 +277,11 @@ Add these new properties:
 **Response Body:**
 
 Change from array to paginated object structure:
+
 - `items` - Array of assignments
 - `total` - Total number of assignments
 - `page` - Current page number
 - `pageSize` - Items per page
-
-<br />
-
-> ### GET - /groups/{groupId}/assignments/{assignmentId}
-
-User Action: _Fetch a specific assignment by id._
-
-<br />
-
-> ### GET - /groups/{groupId}/assignments/{assignmentId}/progress
-
-User Action: _Get progress for a specific assignment._
 
 <br />
 
@@ -334,6 +294,7 @@ This endpoint needs to be implemented
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-createdAt")
@@ -343,12 +304,14 @@ Add these new properties:
 **Response Body:**
 
 Add paginated response structure:
+
 - `items` - Array of quiz objects
 - `total` - Total number of quizzes
 - `page` - Current page number
 - `pageSize` - Items per page
 
 Add these properties to each quiz item:
+
 - `quizTypeId` → Quiz Type ID
 - `title` → Quiz title
 - `description` → Quiz description
@@ -361,12 +324,6 @@ Add these properties to each quiz item:
 
 <br />
 
-> ### POST - /groups/{groupId}/assignments
-
-Leader / Co-leader Action: _Create a new assignment for a group._
-
-<br />
-
 ## GROUPS - MEMBERS
 
 > ### GET - /groups/{groupId}/members
@@ -376,6 +333,7 @@ User Action: _List members of a group._
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-createdAt")
@@ -385,32 +343,16 @@ Add these new properties:
 **Response Body:**
 
 Change from array to paginated object structure:
+
 - `items` - Array of members
 - `total` - Total number of members
 - `page` - Current page number
 - `pageSize` - Items per page
 
 Add these properties to each member item:
+
 - `image` → User's profile image URL
 - `joinedAt` → Timestamp when user joined the group
-
-<br />
-
-> ### POST - /groups/{groupId}/members/{userId}/promote-co-leader
-
-Leader Action: _Promote a member to co-leader._
-
-<br />
-
-> ### POST - /groups/{groupId}/members/{userId}/demote-co-leader
-
-Leader Action: _Demote a co-leader back to member._
-
-<br />
-
-> ### POST - /groups/{groupId}/members/{userId}/ban
-
-Leader / Co-leader Action: _Ban a member from the group._
 
 <br />
 
@@ -423,6 +365,7 @@ User Action: _Fetch the leaderboard for a group._
 **Query Params:**
 
 Add these new properties:
+
 - `page` → Page Number (default: 1)
 - `pageSize` → Page Size (default: 20)
 - `sort` → Sort Order (default: "-xp")
@@ -430,11 +373,13 @@ Add these new properties:
 **Response Body:**
 
 Change from `entries` array to paginated object structure:
+
 - `items` - Array of leaderboard entries (renamed from `entries`)
 - `total` - Total number of entries
 - `page` - Current page number
 - `pageSize` - Items per page
 
 Add these properties to each leaderboard entry:
+
 - `image` → User's profile image URL
 - `role` → User's role in the group (e.g., "leader", "co_leader", "member")
