@@ -69,6 +69,17 @@ User Action: _List all public groups available to join._
 
 <br />
 
+> ### GET - /groups/{groupId}
+
+User Action: _Fetch a specific group by id._
+
+**Response Body:**
+
+1. **Change these properties:**
+   - `imageUrl` → `iconPath` - Change from URL string to string (references file path in frontend)
+
+<br />
+
 > ### POST - /groups
 
 User Action: _Create a new group._

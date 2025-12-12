@@ -132,6 +132,54 @@ User Action: _List all public groups available to join._
 
 <br />
 
+> ### GET - /groups/{groupId}
+
+User Action: _Fetch a specific group by id._
+
+#### Query Params
+
+```json
+{}
+```
+
+#### Request Body
+
+```json
+{}
+```
+
+#### Response Body
+
+```json
+{
+  "success": true,
+  "message": "Group fetched",
+  "data": {
+    "group": {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "Downtown Bible Group",
+      "description": "A community group studying the Bible weekly.",
+      "iconPath": "string",
+      "type": "bible_study",
+      "privacy": "public",
+      "isArchived": false,
+      "isBanned": false,
+      "lastActivityAt": "2025-01-15T10:30:00.000Z",
+      "memberCount": 25,
+      "createdAt": "2025-01-15T10:30:00.000Z",
+      "updatedAt": "2025-01-15T10:30:00.000Z"
+    },
+    "leader": {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "username": "john_doe",
+      "name": "John Doe"
+    }
+  }
+}
+```
+
+<br />
+
 > ### POST - /groups
 
 User Action: _Create a new group._
