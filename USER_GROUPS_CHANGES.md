@@ -76,6 +76,7 @@ User Action: _Fetch a specific group by id._
 **Response Body:**
 
 1. **Change these properties:**
+
    - `imageUrl` → `iconPath` - Change from URL string to string (references file path in frontend)
 
 2. **Add these new properties:**
@@ -413,6 +414,38 @@ Add these properties to each member item:
 
 - `image` → User's profile image URL
 - `joinedAt` → Timestamp when user joined the group
+
+<br />
+
+> ### POST - /groups/{groupId}/members/{userId}/remove
+
+Leader / Co-leader Action: _Remove a member from the group (soft remove - can rejoin later)._
+
+This endpoint needs to be implemented
+
+**Response Body:**
+
+Add these properties:
+
+- `groupId` → Group ID
+- `userId` → User ID that was removed
+- `memberCount` → Updated member count
+
+<br />
+
+> ### POST - /groups/{groupId}/members/{userId}/demote-leader
+
+Leader Action: _Demote a leader to co-leader (only when there are 2 leaders)._
+
+This endpoint needs to be implemented
+
+**Response Body:**
+
+Add these properties:
+
+- `groupId` → Group ID
+- `userId` → User ID that was demoted
+- `role` → New role ("co_leader")
 
 <br />
 

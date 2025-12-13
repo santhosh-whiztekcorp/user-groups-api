@@ -1264,6 +1264,70 @@ Leader / Co-leader Action: _Ban a member from the group._
 
 <br />
 
+> ### POST - /groups/{groupId}/members/{userId}/remove
+
+Leader / Co-leader Action: _Remove a member from the group (soft remove - can rejoin later)._
+
+#### Query Params
+
+```json
+{}
+```
+
+#### Request Body
+
+```json
+{}
+```
+
+#### Response Body
+
+```json
+{
+  "success": true,
+  "message": "Member removed",
+  "data": {
+    "groupId": "b0f5c8a2-5678-4d79-9123-7e2c1c7e8d9f",
+    "userId": "9a0b1c2d-6666-4a4b-9c9d-2e3f4a5b6c7d",
+    "memberCount": 13
+  }
+}
+```
+
+<br />
+
+> ### POST - /groups/{groupId}/members/{userId}/demote-leader
+
+Leader Action: _Demote a leader to co-leader (only when there are 2 leaders)._
+
+#### Query Params
+
+```json
+{}
+```
+
+#### Request Body
+
+```json
+{}
+```
+
+#### Response Body
+
+```json
+{
+  "success": true,
+  "message": "Leader demoted to co-leader",
+  "data": {
+    "groupId": "b0f5c8a2-5678-4d79-9123-7e2c1c7e8d9f",
+    "userId": "7f8g9h0i-5555-4a4b-9c9d-2e3f4a5b6c7d",
+    "role": "co_leader"
+  }
+}
+```
+
+<br />
+
 ## GROUPS - LEADERBOARD
 
 > ### GET - /groups/{groupId}/leaderboard
