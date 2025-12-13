@@ -173,7 +173,9 @@ User Action: _Fetch a specific group by id._
       "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
       "username": "john_doe",
       "name": "John Doe"
-    }
+    },
+    "isLeader": false,
+    "isCoLeader": false
   }
 }
 ```

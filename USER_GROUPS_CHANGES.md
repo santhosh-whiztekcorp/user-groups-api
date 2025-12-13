@@ -78,6 +78,10 @@ User Action: _Fetch a specific group by id._
 1. **Change these properties:**
    - `imageUrl` → `iconPath` - Change from URL string to string (references file path in frontend)
 
+2. **Add these new properties:**
+   - `isLeader` → **Is Leader flag** (Boolean indicating if current user is the leader of this group)
+   - `isCoLeader` → **Is Co-Leader flag** (Boolean indicating if current user is a co-leader of this group)
+
 <br />
 
 > ### POST - /groups
