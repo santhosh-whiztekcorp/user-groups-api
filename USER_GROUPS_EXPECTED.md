@@ -491,7 +491,8 @@ Leader / Co-leader Action: _List users eligible to be invited to a specific grou
         "name": "John Doe",
         "username": "johndoe",
         "email": "john.doe@example.com",
-        "image": "https://example.com/profile.png"
+        "image": "https://example.com/profile.png",
+        "isInvited": false
       }
     ],
     "total": 50,

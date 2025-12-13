@@ -198,6 +198,7 @@ Add these properties to each user item:
 - `username` → User's username
 - `email` → User's email address
 - `image` → User's profile image URL
+- `isInvited` → Boolean indicating if the user has a pending invitation for this group
 
 <br />
 
