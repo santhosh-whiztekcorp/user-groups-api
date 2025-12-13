@@ -376,7 +376,12 @@ User Action: _List invitations received by the current user._
 #### Query Params
 
 ```json
-{}
+{
+  "page": 1,
+  "pageSize": 20,
+  "sort": "-createdAt",
+  "status": ""
+}
 ```
 
 #### Request Body
@@ -492,7 +497,6 @@ Leader / Co-leader Action: _List users eligible to be invited to a specific grou
         "id": "user-123-456-789",
         "name": "John Doe",
         "username": "johndoe",
-        "email": "john.doe@example.com",
         "image": "https://example.com/profile.png",
         "isInvited": false
       }
